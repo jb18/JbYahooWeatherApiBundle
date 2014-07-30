@@ -6,7 +6,7 @@
     "type": "symfony-bundle",
     "authors": [
         {
-            "name": "Jean-Baptiste Audebert",
+            "name": "Jean-Baptiste Audebert"
         }
     ],
     "require": {
