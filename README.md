@@ -46,6 +46,7 @@ choose one of these tools -> https://www.google.fr/search?q=weid+find&oq=weid+fi
    * @return SimpleXMLElement Yahoo Weather Api Response
    */
    public function getXml();
+   
    /**
    * Get Current condition datas : Attributes of node yweather:condition of xml
    * @see https://developer.yahoo.com/weather/#item
