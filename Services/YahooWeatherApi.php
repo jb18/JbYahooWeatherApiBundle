@@ -16,13 +16,17 @@
 		protected $unit;
 		protected $xml;
 
+		protected $leasewebmemcached = null;
+
 		/**
 		* @param string $woeid Woeid inject by Symfony2
 		* @param string $unit Unit inject by Symfony2 (f or c for Farheneint or Celsius)
+		* @param Lsw\MemcacheBundle\Cache\AntiDogPileMemcache|null Instance of LeaseWebMemcachedBundle if exists
      	*/
-		public function __construct($woeid,$unit){
+		public function __construct($woeid,$unit,$leasewebmemcached){
 			$this->woeid = $woeid;
 			$this->unit = $unit;
+			$this->leasewebmemcached = $leasewebmemcached;
 		}
 
 		/**
@@ -33,12 +37,22 @@
      	* @return YahooWeatherApi Current object
      	*/
 		public function query($woeid=null){
-
 			$woeidToUse = (is_null($woeid)) ? $this->woeid : $woeid;
+			$keyCache = 'content_'.$woeidToUse;
 
-			$browser = new Browser();
-			$response = $browser->get($this->urlApi.'?w='.$woeidToUse.'&u='.$this->unit);
-			$content = $response->getContent();
+			if($this->leasewebmemcached !== null){
+				$content = $this->leasewebmemcached->get($keyCache);
+			}
+
+			if($this->leasewebmemcached == null || $content == null){
+				$browser = new Browser();
+				$response = $browser->get($this->urlApi.'?w='.$woeidToUse.'&u='.$this->unit);
+				$content = $response->getContent();
+				if($this->leasewebmemcached !== null){
+					$this->leasewebmemcached->set($keyCache,$content,600);
+				}
+			}
+
 			$xml = new \SimpleXMLElement($content);
 
 			$this->xml = $xml;
