@@ -15,7 +15,7 @@
         "kriswallsmith/buzz": "0.11"
     },
     "autoload": {
-        "psr-0": { "Jb\\YahooWeatherApiBundle": "Jb/YahooWeatherApiBundle" }
+        "psr-0": { "Jb\\YahooWeatherApiBundle": "" }
     },
     "target-dir": "Jb/YahooWeatherApiBundle"
 }
