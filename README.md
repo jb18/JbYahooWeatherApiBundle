@@ -33,6 +33,21 @@ jb_yahoo_weather_api:
 The woeid is a code which correponds to your city : 
 choose one of these tools -> https://www.google.fr/search?q=weid+find&oq=weid+find&aqs=chrome..69i57.2639j0j7&sourceid=chrome&es_sm=122&ie=UTF-8#q=woeid&safe=off
 
+## Activate memcached
+
+### config.yml
+```yaml
+lsw_memcache:
+    clients:
+        jb_yahoo_weather_api:
+            hosts:
+              - { dsn: localhost, port: 11211 }
+            options:
+                prefix_key: "jbywa_"
+```
+
+And just have a look on debugbar to see if you have hits or write to memcached
+
 ## Methods
 
 ```php
