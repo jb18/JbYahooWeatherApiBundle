@@ -3,7 +3,7 @@
     "description": "Jb YahooWeatherApi Bundle for Symfony2",
     "keywords": ["jb", "yahoo weather api", "weather", "symfony", "bundle"],
     "homepage": "https://github.com/jb18/JbYahooWeatherApiBundle",
-    "type": "library",
+    "type": "symfony-bundle",
     "authors": [
         {
             "name": "Jean-Baptiste Audebert",
