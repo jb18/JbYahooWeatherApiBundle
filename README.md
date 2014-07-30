@@ -1,6 +1,9 @@
 JbYahooWeatherApiBundle
 =======================
 
+## Versions
+Current : 0.5
+
 ## Using and Setting Up
 ### Add in AppKernel.php
 
