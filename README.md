@@ -47,7 +47,7 @@ lsw_memcache:
                 prefix_key: "jbywa_"
 ```
 
-And just have a look on debugbar to see if you have hits or write to memcached
+And just have a look on debugbar to see if you have hits or write to memcached. Currently TTL is fixed on 600 seconds
 
 ## Methods
 
