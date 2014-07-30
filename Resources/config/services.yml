@@ -1,0 +1,7 @@
+parameters:
+    jb_yahoo_weather_api.service.class: Jb\YahooWeatherApiBundle\Services\YahooWeatherApi
+
+services:
+    jb.yahoo_weather_api:
+        class: %jb_yahoo_weather_api.service.class%
+        arguments: [%jb.YahooWeatherApi.city_woeid%,%jb.YahooWeatherApi.unit%]

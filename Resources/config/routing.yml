@@ -1,0 +1,3 @@
+jb_yahoo_weather_api_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: JbYahooWeatherApiBundle:Default:index }
