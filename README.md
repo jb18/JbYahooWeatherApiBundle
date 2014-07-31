@@ -1,8 +1,12 @@
 JbYahooWeatherApiBundle
 =======================
 
+[![Latest Stable Version](https://poser.pugx.org/jb/yahooweatherapibundle/v/stable.svg)](https://packagist.org/packages/jb/yahooweatherapibundle) [![Total Downloads](https://poser.pugx.org/jb/yahooweatherapibundle/downloads.svg)](https://packagist.org/packages/jb/yahooweatherapibundle) [![Latest Unstable Version](https://poser.pugx.org/jb/yahooweatherapibundle/v/unstable.svg)](https://packagist.org/packages/jb/yahooweatherapibundle) [![License](https://poser.pugx.org/jb/yahooweatherapibundle/license.svg)](https://packagist.org/packages/jb/yahooweatherapibundle)
+
+
 ## Versions
-* 0.6 <-- Current
+* 0.6.1 <--Current
+* 0.6
 * 0.5.2
 * 0.5.1
 * 0.5.0
