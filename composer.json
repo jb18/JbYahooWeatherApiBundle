@@ -4,6 +4,7 @@
     "keywords": ["jb", "yahoo weather api", "weather", "symfony", "bundle"],
     "homepage": "https://github.com/jb18/JbYahooWeatherApiBundle",
     "type": "symfony-bundle",
+    "license": "Apache2",
     "authors": [
         {
             "name": "Jean-Baptiste Audebert"
