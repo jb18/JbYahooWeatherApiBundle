@@ -1,7 +1,7 @@
 {
     "name": "jb/yahooweatherapibundle",
     "description": "JbYahooWeatherApi Bundle for Symfony2",
-    "keywords": ["jb", "yahoo weather api","Yahoo! weather","Yahoo Weather RSS Feed", "weather", "symfony", "bundle"],
+    "keywords": ["jb", "yahoo weather api", "Yahoo! weather", "Yahoo Weather RSS Feed", "weather", "symfony", "bundle"],
     "homepage": "https://github.com/jb18/JbYahooWeatherApiBundle",
     "type": "symfony-bundle",
     "license": "Apache2",
