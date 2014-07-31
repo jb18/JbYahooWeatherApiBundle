@@ -13,7 +13,8 @@ JbYahooWeatherApiBundle
 ```php
 public function registerBundles() {
   $bundles = array(
-    new Jb\YahooWeatherApiBundle\JbYahooWeatherApiBundle()
+    new Jb\YahooWeatherApiBundle\JbYahooWeatherApiBundle(),
+    new Lsw\MemcacheBundle\LswMemcacheBundle()
   );
 }
 ```
