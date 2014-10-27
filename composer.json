@@ -5,7 +5,7 @@
     "homepage": "https://github.com/jb18/JbYahooWeatherApiBundle",
     "type": "symfony-bundle",
     "license": "Apache-2.0",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Jean-Baptiste Audebert"
