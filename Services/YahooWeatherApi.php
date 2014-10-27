@@ -44,7 +44,7 @@
                 $content = $this->leasewebmemcached->get($keyCache);
             }
 
-            if($this->leasewebmemcached == null || $content == null){
+            if($this->leasewebmemcached === null || $content === null){
                 $browser = new Browser();
                 $response = $browser->get($this->urlApi.'?w='.$woeidToUse.'&u='.$this->unit);
                 $content = $response->getContent();
@@ -156,3 +156,4 @@
         }
 
     }
+

@@ -4,7 +4,7 @@
     "keywords": ["jb", "yahoo weather api", "Yahoo weather", "Yahoo Weather RSS Feed", "weather", "symfony", "bundle"],
     "homepage": "https://github.com/jb18/JbYahooWeatherApiBundle",
     "type": "symfony-bundle",
-    "license": "Apache2",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Jean-Baptiste Audebert"
@@ -13,8 +13,10 @@
     "require": {
         "php": ">=5.3.0",
         "symfony/symfony": "2.*",
-        "kriswallsmith/buzz": "0.11",
-        "leaseweb/memcache-bundle": "~1.2.13"
+        "kriswallsmith/buzz": "0.11"
+    },
+    "suggest":{
+	"leaseweb/memcache-bundle": "to use memcached feature"
     },
     "autoload": {
         "psr-0": { "Jb\\YahooWeatherApiBundle": "" }
