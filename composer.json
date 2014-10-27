@@ -1,4 +1,5 @@
 {
+    "minimum-stability": "dev",
     "name": "jb/yahooweatherapibundle",
     "description": "JbYahooWeatherApi Bundle for Symfony2",
     "keywords": ["jb", "yahoo weather api", "Yahoo weather", "Yahoo Weather RSS Feed", "weather", "symfony", "bundle"],
