@@ -18,7 +18,7 @@
     },
     "require-dev": {
     	"symfony/framework-standard-edition": ">=2.5"
-    }
+    },
     "suggest":{
 	"leaseweb/memcache-bundle": "to use memcached feature"
     },
