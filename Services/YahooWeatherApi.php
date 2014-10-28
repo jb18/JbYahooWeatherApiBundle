@@ -60,7 +60,7 @@
             if($this->status == 200){
                 $xml = new \SimpleXMLElement($content);
             }else{
-                $xml = new \SimpleXMLElement();
+                $xml = null;
             }
 
             $this->xml = $xml;
