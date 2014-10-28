@@ -15,6 +15,7 @@
         protected $woeid;
         protected $unit;
         protected $xml;
+        protected $status;
 
         protected $leasewebmemcached = null;
 
@@ -47,13 +48,20 @@
             if($this->leasewebmemcached === null || $content === null){
                 $browser = new Browser();
                 $response = $browser->get($this->urlApi.'?w='.$woeidToUse.'&u='.$this->unit);
+                
+                $this->status = $response->getStatusCode();
+                                                  
                 $content = $response->getContent();
                 if($this->leasewebmemcached !== null){
                     $this->leasewebmemcached->set($keyCache,$content,600);
                 }
             }
-
-            $xml = new \SimpleXMLElement($content);
+            
+            if($this->status == 200){
+                $xml = new \SimpleXMLElement($content);
+            }else{
+                $xml = new \SimpleXMLElement();
+            }
 
             $this->xml = $xml;
 
@@ -137,8 +145,13 @@
         * @return string temperature
         */
         public function temp(){
-            $current = $this->xml->channel->item->xpath('yweather:condition');
-            $temp = (string)$current[0]->attributes()->temp;
+            
+            if(count($this->xml->channel->item->xpath('yweather:condition')) > 0){
+                $current = $this->xml->channel->item->xpath('yweather:condition');
+                $temp = (float)$current[0]->attributes()->temp;
+            }else{
+                $temp = null;
+            }
 
             return $temp;    
         }
@@ -149,8 +162,13 @@
         * @return string city
         */
         public function city(){
-            $current = $this->xml->channel->xpath('yweather:location');
-            $city = (string)$current[0]->attributes()->city;
+                        
+            if(count($this->xml->channel->xpath('yweather:location')) > 0){
+                $current = $this->xml->channel->xpath('yweather:location');
+                $city = (string)$current[0]->attributes()->city;
+            }else{
+                $city = null;
+            }
 
             return $city;
         }
