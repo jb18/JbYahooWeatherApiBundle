@@ -16,6 +16,7 @@
         protected $unit;
         protected $xml;
         protected $status;
+        protected $env;
 
         protected $leasewebmemcached = null;
 
@@ -24,9 +25,10 @@
         * @param string $unit Unit inject by Symfony2 (f or c for Farheneint or Celsius)
         * @param Lsw\MemcacheBundle\Cache\AntiDogPileMemcache|null Instance of LeaseWebMemcachedBundle if exists
         */
-        public function __construct($woeid,$unit,$leasewebmemcached){
+        public function __construct($woeid,$unit,$env,$leasewebmemcached){
             $this->woeid = $woeid;
             $this->unit = $unit;
+            $this->env = $env;
             $this->leasewebmemcached = $leasewebmemcached;
         }
 
@@ -40,8 +42,10 @@
         public function query($woeid=null){
             $woeidToUse = (is_null($woeid)) ? $this->woeid : $woeid;
             $keyCache = 'content_'.$woeidToUse;
+            
+            $content = null;
 
-            if($this->leasewebmemcached !== null){
+            if($this->leasewebmemcached !== null && $this->env == "prod"){
                 $content = $this->leasewebmemcached->get($keyCache);
             }
 
@@ -146,7 +150,7 @@
         */
         public function temp(){
             
-            if(count($this->xml->channel->item->xpath('yweather:condition')) > 0){
+            if($this->xml !== null && count($this->xml->channel->item->xpath('yweather:condition')) > 0){
                 $current = $this->xml->channel->item->xpath('yweather:condition');
                 $temp = (float)$current[0]->attributes()->temp;
             }else{
@@ -163,7 +167,7 @@
         */
         public function city(){
                         
-            if(count($this->xml->channel->xpath('yweather:location')) > 0){
+            if($this->xml !== null && count($this->xml->channel->xpath('yweather:location')) > 0){
                 $current = $this->xml->channel->xpath('yweather:location');
                 $city = (string)$current[0]->attributes()->city;
             }else{
