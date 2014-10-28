@@ -21,5 +21,6 @@
     "autoload": {
         "psr-0": { "Jb\\YahooWeatherApiBundle": "" }
     },
-    "target-dir": "Jb/YahooWeatherApiBundle"
+    "target-dir": "Jb/YahooWeatherApiBundle",
+    "minimum-stability": "dev"
 }
