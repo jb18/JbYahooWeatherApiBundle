@@ -57,7 +57,7 @@
                 }
             }
             
-            if($this->status == 200){
+            if($content){
                 $xml = new \SimpleXMLElement($content);
             }else{
                 $xml = null;
