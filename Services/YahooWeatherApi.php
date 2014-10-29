@@ -21,6 +21,8 @@
         protected $env;
 
         protected $leasewebmemcached = null;
+        
+        static $lastFromcache = false;
 
         /**
         * @param string $woeid Woeid inject by Symfony2
@@ -41,16 +43,14 @@
         *
         * @return YahooWeatherApi Current object
         */
-        public function query(Response $response=null,$woeid=null){
+        public function query($woeid=null){
             $woeidToUse = (is_null($woeid)) ? $this->woeid : $woeid;
             $keyCache = 'content_'.$this->env.'_'.$woeidToUse;
             
             $content = null;
 
             if($this->leasewebmemcached !== null && $this->env == "prod"){
-                if($response !== null){
-                    $response->headers->set('weather-cache-hit',true);
-                }
+                self::$lastFromcache = true;
                 $content = $this->leasewebmemcached->get($keyCache);
             }
 
