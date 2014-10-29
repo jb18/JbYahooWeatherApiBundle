@@ -52,9 +52,9 @@
             if($this->leasewebmemcached !== null && $this->env == "prod"){
                 self::$lastFromcache = true;
                 $content = $this->leasewebmemcached->get($keyCache);
-            }
+	    }
 
-            if($content === null){
+            if($content === null || $content == ""){
                 $browser = new Browser();
                 $response = $browser->get($this->urlApi.'?w='.$woeidToUse.'&u='.$this->unit);
                 
