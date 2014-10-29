@@ -22,7 +22,7 @@
 
         protected $leasewebmemcached = null;
         
-        static $lastFromcache = false;
+        static $lastFromcache = "no";
 
         /**
         * @param string $woeid Woeid inject by Symfony2
@@ -46,11 +46,13 @@
         public function query($woeid=null){
             $woeidToUse = (is_null($woeid)) ? $this->woeid : $woeid;
             $keyCache = 'content_'.$this->env.'_'.$woeidToUse;
+
+            self::$lastFromcache = "no";
             
             $content = null;
 
             if($this->leasewebmemcached !== null && $this->env == "prod"){
-                self::$lastFromcache = true;
+                self::$lastFromcache = "yes";
                 $content = $this->leasewebmemcached->get($keyCache);
 	    }
 
@@ -62,7 +64,7 @@
                                                   
                 $content = $response->getContent();
                 if($this->leasewebmemcached !== null){
-                    $this->leasewebmemcached->set($keyCache,$content,60);
+                    $this->leasewebmemcached->set($keyCache,$content,350);
                 }
             }
             

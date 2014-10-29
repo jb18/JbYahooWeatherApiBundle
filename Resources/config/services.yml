@@ -2,3 +2,8 @@ services:
     jb.yahoo_weather_api:
         class: Jb\YahooWeatherApiBundle\Services\YahooWeatherApi
         arguments: [%jb.YahooWeatherApi.city_woeid%,%jb.YahooWeatherApi.unit%,%kernel.environment%,"@?memcache.jb_yahoo_weather_api"]
+
+    jb.yahoo_weather_api.listener.onKernelResponse:
+        class: Jb\YahooWeatherApiBundle\Listeners\Listener
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
