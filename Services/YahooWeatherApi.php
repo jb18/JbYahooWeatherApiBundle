@@ -41,7 +41,7 @@
         */
         public function query($woeid=null){
             $woeidToUse = (is_null($woeid)) ? $this->woeid : $woeid;
-            $keyCache = 'content_'.$woeidToUse;
+            $keyCache = 'content_'.$this->env.'_'.$woeidToUse;
             
             $content = null;
 
@@ -49,7 +49,7 @@
                 $content = $this->leasewebmemcached->get($keyCache);
             }
 
-            if($this->leasewebmemcached === null || $content === null){
+            if($content === null){
                 $browser = new Browser();
                 $response = $browser->get($this->urlApi.'?w='.$woeidToUse.'&u='.$this->unit);
                 
@@ -57,7 +57,7 @@
                                                   
                 $content = $response->getContent();
                 if($this->leasewebmemcached !== null){
-                    $this->leasewebmemcached->set($keyCache,$content,600);
+                    $this->leasewebmemcached->set($keyCache,$content,60);
                 }
             }
             
