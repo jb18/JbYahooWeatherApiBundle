@@ -20,7 +20,7 @@ class YahooWeatherApiTest extends WebTestCase
         $client = self::createClient();
         $service= $client->getContainer()->get('jb.yahoo_weather_api');
         
-        $returnValues = $service->query("123456");  
+        $returnValues = $service->query(null,"123456");  
         
         $this->all($returnValues);       
     }
