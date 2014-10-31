@@ -19,3 +19,5 @@
 
         "fabpot/goutte": "~2.0",
         "aequasi/cache-bundle": "dev-master"
+---
+When using memcached you can see in response HTTP headers if the date is from Api or cache. The key is api-weather-hit-cache
