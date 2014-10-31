@@ -25,5 +25,6 @@
             "Jb\\ApiYahooWeatherBundle": ""
         }
     },
+    "target-dir": "Jb/ApiYahooWeatherBundle",
     "minimum-stability": "dev"
 }
