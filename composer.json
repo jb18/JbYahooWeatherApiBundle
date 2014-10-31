@@ -1,0 +1,30 @@
+{
+    "name": "jb/api-yahoo-weather-bundle",
+    "description": "A bundle for SYmfony2 which use jb/api-yahoo-weather to get weather informations from Yahoo Api",
+    "type": "symfony-bundle",
+    "keywords": ["yahoo api","weather"],
+    "homepage": "https://github.com/jb18/JbApiYahooWeatherBundle",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Jean-Baptiste AUDEBERT",
+            "email": "audebert.jb@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/framework-bundle": "~2.3",
+        "jb/api-yahoo-weather": "~1.0",
+        "fabpot/goutte": "~2.0"
+    },
+    "suggest": {
+        "aequasi/cache-bundle": "to use memcached features"
+    },
+    "autoload": {
+        "psr-0": {
+            "Jb\\ApiYahooWeatherBundle": ""
+        }
+    },
+    "target-dir": "Jb/ApiYahooWeatherBundle",
+    "minimum-stability": "dev"
+}
