@@ -1,0 +1,16 @@
+services:
+    jb_api_yahoo_weather:
+        class: Jb\ApiYahooWeatherBundle\Services\ApiYahooWeatherService
+        arguments: [%jb_api_yahoo_weather.woeid%, %jb_api_yahoo_weather.unit%,@?aequasi_cache.jb_api_yahoo_weather,jb_api_yahoo_weather.ttl]
+        
+    jb_api_yahoo_weather.listener.onKernelresponse:
+        class: Jb\ApiYahooWeatherBundle\Listeners\ApiYahooWeatherBundleListener
+        arguments: [@jb_api_yahoo_weather]
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+            
+    jb_api_yahoo_weather.twig_extension:
+        class: Jb\ApiYahooWeatherBundle\Twig\ApiYahooWeatherTwigExtension
+        arguments: [@jb_api_yahoo_weather]
+        tags:
+            - { name: twig.extension }
